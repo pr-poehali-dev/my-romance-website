@@ -7,9 +7,17 @@ const nav = [
   { id: 'home', label: 'Главная' },
   { id: 'about', label: 'Обо мне' },
   { id: 'team', label: 'Команда' },
+  { id: 'shop', label: 'Магазин' },
   { id: 'projects', label: 'Проекты' },
   { id: 'blog', label: 'Блог' },
   { id: 'contacts', label: 'Контакты' },
+];
+
+const candyWeights = [
+  { w: '100 г', price: '120 ₽' },
+  { w: '250 г', price: '280 ₽' },
+  { w: '500 г', price: '520 ₽' },
+  { w: '1 кг', price: '980 ₽' },
 ];
 
 const team = [
@@ -211,6 +219,74 @@ const Index = () => {
           <Icon name="ShieldCheck" size={16} className="text-lime" />
           Указаны рабочие контакты. Личные адреса не публикуются в целях безопасности.
         </p>
+      </section>
+
+      {/* SHOP */}
+      <section id="shop" className="px-5 sm:px-8 max-w-7xl mx-auto py-24">
+        <div className="flex items-end justify-between mb-12">
+          <h2 className="font-display font-700 uppercase text-5xl sm:text-6xl">Магазин</h2>
+          <span className="text-paper/50 font-display uppercase tracking-widest text-sm hidden sm:block">Товары</span>
+        </div>
+        <div className="grid sm:grid-cols-2 gap-6">
+
+          {/* COFFEE */}
+          <div className="border border-white/10 p-8 flex flex-col gap-6 hover:border-flame/50 transition-all group">
+            <div className="flex items-start justify-between">
+              <div>
+                <span className="text-flame font-display uppercase tracking-widest text-xs">Горячие напитки</span>
+                <h3 className="font-display font-700 uppercase text-4xl mt-1">Кофе</h3>
+              </div>
+              <span className="text-5xl">☕</span>
+            </div>
+            <p className="text-paper/60 leading-relaxed">
+              Свежеобжаренный кофе — насыщенный вкус и аромат. Приготовим так, как тебе нравится.
+            </p>
+            <div className="flex items-end justify-between mt-auto">
+              <div>
+                <div className="text-paper/40 text-sm uppercase tracking-widest">Цена</div>
+                <div className="font-display font-700 text-4xl text-flame">650 ₽</div>
+              </div>
+              <button
+                onClick={() => document.getElementById('contacts')?.scrollIntoView({ behavior: 'smooth' })}
+                className="bg-flame text-ink font-display uppercase tracking-widest text-sm px-6 py-3 hover:bg-paper transition-colors"
+              >
+                Заказать
+              </button>
+            </div>
+          </div>
+
+          {/* CANDY */}
+          <div className="border border-white/10 p-8 flex flex-col gap-6 hover:border-lime/50 transition-all group">
+            <div className="flex items-start justify-between">
+              <div>
+                <span className="text-lime font-display uppercase tracking-widest text-xs">Сладкое</span>
+                <h3 className="font-display font-700 uppercase text-4xl mt-1">Конфеты</h3>
+              </div>
+              <span className="text-5xl">🍬</span>
+            </div>
+            <p className="text-paper/60 leading-relaxed">
+              Любые конфеты на развес — цена зависит от весовой категории. Выбирай сколько душе угодно.
+            </p>
+            <div className="mt-auto">
+              <div className="text-paper/40 text-sm uppercase tracking-widest mb-3">Цена по весу</div>
+              <div className="grid grid-cols-4 gap-2">
+                {candyWeights.map((c) => (
+                  <div key={c.w} className="border border-white/10 p-3 text-center hover:border-lime/60 transition-colors">
+                    <div className="text-lime font-display font-700 text-lg">{c.price}</div>
+                    <div className="text-paper/50 text-xs uppercase tracking-wider mt-1">{c.w}</div>
+                  </div>
+                ))}
+              </div>
+              <button
+                onClick={() => document.getElementById('contacts')?.scrollIntoView({ behavior: 'smooth' })}
+                className="mt-4 w-full border border-lime/40 text-lime font-display uppercase tracking-widest text-sm px-6 py-3 hover:bg-lime hover:text-ink transition-colors"
+              >
+                Узнать наличие
+              </button>
+            </div>
+          </div>
+
+        </div>
       </section>
 
       {/* PROJECTS */}
