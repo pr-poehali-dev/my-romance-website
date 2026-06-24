@@ -6,9 +6,17 @@ const HERO_IMG = 'https://cdn.poehali.dev/projects/42c8aca0-7728-4ba6-b649-482b7
 const nav = [
   { id: 'home', label: 'Главная' },
   { id: 'about', label: 'Обо мне' },
+  { id: 'team', label: 'Команда' },
   { id: 'projects', label: 'Проекты' },
   { id: 'blog', label: 'Блог' },
   { id: 'contacts', label: 'Контакты' },
+];
+
+const team = [
+  { name: 'Артём Соколов', role: 'Арт-директор', phone: '+7 922 000-00-01', email: 'artem@studio.ru', color: 'var(--flame)' },
+  { name: 'Мария Лебедева', role: 'Дизайнер', phone: '+7 922 000-00-02', email: 'maria@studio.ru', color: 'var(--electric)' },
+  { name: 'Денис Орлов', role: 'Разработчик', phone: '+7 922 000-00-03', email: 'denis@studio.ru', color: 'var(--lime)' },
+  { name: 'Ольга Зайцева', role: 'Менеджер проектов', phone: '+7 922 000-00-04', email: 'olga@studio.ru', color: 'var(--flame)' },
 ];
 
 const projects = [
@@ -154,6 +162,55 @@ const Index = () => {
             </div>
           </div>
         </div>
+      </section>
+
+      {/* TEAM */}
+      <section id="team" className="px-5 sm:px-8 max-w-7xl mx-auto py-24">
+        <div className="flex items-end justify-between mb-12">
+          <h2 className="font-display font-700 uppercase text-5xl sm:text-6xl">Команда</h2>
+          <span className="text-paper/50 font-display uppercase tracking-widest text-sm hidden sm:block">Сотрудники</span>
+        </div>
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {team.map((m) => (
+            <div
+              key={m.name}
+              className="group border border-white/10 p-7 hover:border-transparent transition-all relative overflow-hidden"
+            >
+              <div
+                className="absolute inset-x-0 top-0 h-1 transition-all group-hover:h-full group-hover:opacity-100 opacity-100 -z-0"
+                style={{ backgroundColor: m.color, height: '4px' }}
+              />
+              <div className="relative z-10">
+                <div
+                  className="w-14 h-14 flex items-center justify-center font-display font-700 text-2xl text-ink mb-6"
+                  style={{ backgroundColor: m.color }}
+                >
+                  {m.name.charAt(0)}
+                </div>
+                <h3 className="font-display font-700 uppercase text-2xl leading-tight">{m.name}</h3>
+                <p className="text-paper/50 uppercase tracking-widest text-xs mt-1 mb-6">{m.role}</p>
+                <a
+                  href={`tel:${m.phone.replace(/[^+\d]/g, '')}`}
+                  className="flex items-center gap-2 text-paper/70 hover:text-flame transition-colors text-sm"
+                >
+                  <Icon name="Phone" size={16} />
+                  {m.phone}
+                </a>
+                <a
+                  href={`mailto:${m.email}`}
+                  className="flex items-center gap-2 text-paper/70 hover:text-flame transition-colors text-sm mt-2"
+                >
+                  <Icon name="Mail" size={16} />
+                  {m.email}
+                </a>
+              </div>
+            </div>
+          ))}
+        </div>
+        <p className="mt-8 text-paper/40 text-sm flex items-center gap-2">
+          <Icon name="ShieldCheck" size={16} className="text-lime" />
+          Указаны рабочие контакты. Личные адреса не публикуются в целях безопасности.
+        </p>
       </section>
 
       {/* PROJECTS */}
